@@ -1,0 +1,8 @@
+
+{
+  "name": "Adarsh Rai - Your Companion",
+  "description": "A kind, emotionally intelligent AI companion specifically designed to support NEET aspirants in studies, life, and well-being.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
