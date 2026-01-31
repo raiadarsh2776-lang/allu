@@ -2,14 +2,13 @@ import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// Using an arrow function here fixes the "defineConfig is not defined" build error
 export default defineConfig(({ mode }) => {
-    // process.cwd() ensures paths are correct in the Vercel cloud environment
-    const env = loadEnv(mode, process.cwd(), ''); 
-    
+    const env = loadEnv(mode, process.cwd(), '');
     return {
       plugins: [react()],
       define: {
-        // Essential for production build to see your API keys
+        // Essential for production to recognize your API key
         'process.env.VITE_API_KEY': JSON.stringify(env.VITE_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.VITE_API_KEY),
       },
