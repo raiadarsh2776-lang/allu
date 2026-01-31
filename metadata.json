@@ -1,8 +1,5 @@
-
 {
-  "name": "Adarsh Rai - Your Companion",
-  "description": "A kind, emotionally intelligent AI companion specifically designed to support NEET aspirants in studies, life, and well-being.",
-  "requestFramePermissions": [
-    "microphone"
-  ]
+  "name": "NEET Mastery",
+  "description": "A high-quality NEET preparation platform focused on Biology, Physics, and Chemistry practice MCQs and chapter tests.",
+  "requestFramePermissions": []
 }
