@@ -1,36 +1,18 @@
-// import path from 'path';
-// import { defineConfig, loadEnv } from 'vite';
-// import react from '@vitejs/plugin-react';
+import path from 'path';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'url';
 
-// export default defineConfig(({ mode }) => {
-//     const env = loadEnv(mode, '.', '');
-//     return {
-//       server: {
-//         port: 3000,
-//         host: '0.0.0.0',
-//       },
-//       plugins: [react()],
-//       define: {
-//         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-//         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-//       },
-//       resolve: {
-//         alias: {
-//           '@': path.resolve(__dirname, '.'),
-//         }
-//       }
-//     };
-// });
-// vite.config.ts
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, process.cwd(), ''); // Change '.' to process.cwd()
-    return {
-      plugins: [react()],
-      define: {
-        // This ensures your code can find the key during deployment
-        'process.env.VITE_API_KEY': JSON.stringify(env.VITE_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.VITE_API_KEY),
-      },
-      // ... rest of your config
-    };
+// ✅ Fix for __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '.'),
+    },
+  },
 });
+
